@@ -1,0 +1,22 @@
+
+
+<html>
+<h1> Find Area and Circumference of a Circle </h1>
+<p> Enter the radius in the box below </p>
+        <form action="" method="post">
+                <input type="text" name="radius">
+                <input type="submit" value="Calculate">
+            </form>
+{% if area -%}
+<p> The area is:  {{ area }}</p>
+
+{% elif area is string -%}
+<p> Invalid input </p>
+{%- endif %}
+
+
+
+{% if circumference -%}
+<p> The circumference is:  {{ circumference }}</p>
+{%- endif %}
+</html>
