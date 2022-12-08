@@ -5,19 +5,22 @@
 
 <div>
         <h1> Find Area and Circumference of a Circle </h1>
-        <p> Enter the radius in the box below </p>
+        <p> Enter the radius in the box below.  </p>
                 <form action="/" method="post">
                         <input type="text" name="radius">
                         <input type="submit" value="Calculate">
                     </form>
         
-        {% if radius -%}
+        {% if radius-%}
         <p> A circle with a radius {{ radius }} has the following metrics: </p>
+
+        {% elif radius == "Invalid input" -%}
+        <p> Invalid input; please enter a number without commas</p>
         {%- endif %}
         
         
         {% if area -%}
-        <p> The area is:  {{ area }}</p>
+        <p> The area is:  {{ area }} units squared</p>
         
         {% elif area is string -%}
         <p> Invalid input </p>
@@ -26,7 +29,7 @@
         
         
         {% if circumference -%}
-        <p> The circumference is:  {{ circumference }}</p>
+        <p> The circumference is:  {{ circumference }} units</p>
         {%- endif %}
         
         

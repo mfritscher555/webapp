@@ -4,7 +4,6 @@ from flask import Flask
 from flask import render_template, request
 from logging import FileHandler, WARNING
 import math
-# from module import area, circumference
 
 app = Flask(__name__, template_folder='Templates')
 
@@ -27,25 +26,39 @@ def index():
 @app.route('/', methods=['Post'])
 def indexPost():
     radius = request.form['radius']
-    calculatedArea = area(radius)
-    calculatedCircum = circumference(radius)
-    return render_template("index.html", area=calculatedArea, circumference=calculatedCircum, radius=radius)
+    # If the input is good:
+    try:
+        calculatedArea = area(float(radius))
+        calculatedCircum = circumference(float(radius))
+        return render_template("index.html", area=calculatedArea, circumference=calculatedCircum, radius=radius)
+    except ValueError:
+        try:
+            # If the input contains commas
+            radius = radius.replace(",", "")
+            calculatedArea = area(float(radius))
+            calculatedCircum = circumference(float(radius))
+            return render_template("index.html", area=calculatedArea, circumference=calculatedCircum, radius=radius)
+        except ValueError:
+            return render_template("index.html", area="Invalid input", circumference="Invalid input", radius=radius)
+
 
 
 
 
 def area(radius):
-    radius = float(radius)
     value = pi * radius ** 2
     return value
 
 
 
 
+
+
 def circumference(radius):
-    radius = float(radius)
     value = 2 * radius * pi
     return value
+
+
 
 
 
