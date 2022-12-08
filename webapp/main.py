@@ -12,8 +12,8 @@ pi = 3.141592658979
 
 
 #
-file_handler = FileHandler('errorlog.txt')
-file_handler.setLevel(WARNING)
+# file_handler = FileHandler('../webapp/webapp/errorlog.txt')
+# file_handler.setLevel(WARNING)
 
 @app.route('/', methods=['GET'])
 def index():
