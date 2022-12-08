@@ -4,29 +4,22 @@
 <head><link rel="stylesheet" type = "text/css" href="../static/styling/resource.css"></head>
 
 <div>
-        <h1> Find Area and Circumference of a Circle </h1>
+        <h1> Find Area and Circumference of a Circle given Radius </h1>
         <p> Enter the radius in the box below.  </p>
                 <form action="/" method="post">
-                        <input type="text" name="radius">
+                        <input type="number" step = 0.0000000001 name="radius" autocomplete="off">
                         <input type="submit" value="Calculate">
                     </form>
         
         {% if radius-%}
         <p> A circle with a radius {{ radius }} has the following metrics: </p>
-
-        {% elif radius == "Invalid input" -%}
-        <p> Invalid input; please enter a number without commas</p>
         {%- endif %}
-        
+
         
         {% if area -%}
         <p> The area is:  {{ area }} units squared</p>
-        
-        {% elif area is string -%}
-        <p> Invalid input </p>
         {%- endif %}
-        
-        
+
         
         {% if circumference -%}
         <p> The circumference is:  {{ circumference }} units</p>
@@ -46,7 +39,7 @@
 
         
         <!-- <img src="{{url_for('static', filename='circum.png')}}" align="middle"/> -->
-  
+
 
 
 </html>
