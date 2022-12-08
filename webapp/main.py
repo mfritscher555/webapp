@@ -4,28 +4,35 @@ from flask import Flask
 from flask import render_template, request
 from logging import FileHandler, WARNING
 import math
+# from module import area, circumference
+
+app = Flask(__name__, template_folder='Templates')
 
 # pi is a global variable since it does not change
 pi = 3.141592658979
 
-app = Flask(__name__, template_folder='Templates')
-#
-# file_handler = FileHandler('errorlog.txt')
-# file_handler.setLevel(WARNING)
 
-@app.route("/", methods=['GET'])
+#
+file_handler = FileHandler('errorlog.txt')
+file_handler.setLevel(WARNING)
+
+@app.route('/', methods=['GET'])
 def index():
     area=None
     circumference=None
-    return render_template("index.html", area=area, circumference=circumference)
+    radius=None
+    return render_template("index.html", area=area, circumference=circumference, radius=radius)
 
 
-@app.route("/", methods=['Post'])
+@app.route('/', methods=['Post'])
 def indexPost():
     radius = request.form['radius']
     calculatedArea = area(radius)
-    calulatedCircum = circumference(radius)
-    return render_template("index.html", area=calculatedArea, circumference=calulatedCircum)
+    calculatedCircum = circumference(radius)
+    return render_template("index.html", area=calculatedArea, circumference=calculatedCircum, radius=radius)
+
+
+
 
 def area(radius):
     radius = float(radius)
@@ -39,6 +46,10 @@ def circumference(radius):
     radius = float(radius)
     value = 2 * radius * pi
     return value
+
+
+
+
 
 
 

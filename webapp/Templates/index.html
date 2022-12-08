@@ -1,22 +1,46 @@
 
 
 <html>
-<h1> Find Area and Circumference of a Circle </h1>
-<p> Enter the radius in the box below </p>
-        <form action="" method="post">
-                <input type="text" name="radius">
-                <input type="submit" value="Calculate">
-            </form>
-{% if area -%}
-<p> The area is:  {{ area }}</p>
+<head><link rel="stylesheet" type = "text/css" href="../static/styling/resource.css"></head>
 
-{% elif area is string -%}
-<p> Invalid input </p>
-{%- endif %}
+<div>
+        <h1> Find Area and Circumference of a Circle </h1>
+        <p> Enter the radius in the box below </p>
+                <form action="/" method="post">
+                        <input type="text" name="radius">
+                        <input type="submit" value="Calculate">
+                    </form>
+        
+        {% if radius -%}
+        <p> A circle with a radius {{ radius }} has the following metrics: </p>
+        {%- endif %}
+        
+        
+        {% if area -%}
+        <p> The area is:  {{ area }}</p>
+        
+        {% elif area is string -%}
+        <p> Invalid input </p>
+        {%- endif %}
+        
+        
+        
+        {% if circumference -%}
+        <p> The circumference is:  {{ circumference }}</p>
+        {%- endif %}
+        
+        
+        
+        <h2> Formulas </h2>
+        
+        <p>The area of a circle is defined as:</p>
+        <img src="{{url_for('static', filename='area_circle.png')}}" align="middle"/>
+        
+        
+        <p>The circumference of a circle is defined as:</p>
+        
+        <img src="{{url_for('static', filename='circum.png')}}" align="middle"/>
+  
 
 
-
-{% if circumference -%}
-<p> The circumference is:  {{ circumference }}</p>
-{%- endif %}
 </html>
